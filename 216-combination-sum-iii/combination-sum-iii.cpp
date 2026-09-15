@@ -8,7 +8,7 @@ void solve(int idx,int k,int n, vector<vector<int>>&ans, vector<int>&curr){
     }
      return;
     }
-   
+   if(n<0)return;
     for(int i=idx;i<=9;i++){
         curr.push_back(i);
         solve(i+1,k-1,n-i,ans,curr);

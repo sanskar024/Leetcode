@@ -28,11 +28,12 @@ struct compare {
     while(!pq.empty()){
 ListNode* temp=pq.top();
 pq.pop();
-tail->next=temp;
+   tail->next = new ListNode(temp->val);
+            tail = tail->next;
 if(temp->next){
     pq.push(temp->next);
 }
-tail=temp;
+
     }
    return dummy->next; }
 };

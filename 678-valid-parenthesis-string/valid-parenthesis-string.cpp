@@ -1,33 +1,46 @@
 class Solution {
 public:
-int t[101][101];
-bool solve(int idx,int open,string s,int n){
- if(idx==n){
-    return open==0;
-     }
-     bool isValid=false;
-     if(t[idx][open]!=-1)return t[idx][open];
-     if(s[idx]=='('){
-        isValid=solve(idx+1,open+1,s,n);
-     }
-     else if(s[idx]=='*'){
-     isValid = solve(idx + 1, open + 1, s, n) ||
-          solve(idx + 1, open, s, n);
+    int dp[101][101];
 
-    if(open > 0) {
-    isValid = isValid || solve(idx + 1, open - 1, s, n);
-}
-     }
-     else if(s[idx]==')'){
-        if(open>0){
-            isValid=solve(idx+1,open-1,s,n);
+    bool solve(string &s, int i, int open) {
+
+        if (open < 0)
+            return false;
+
+        if (i == s.size())
+            return open == 0;
+
+        if (dp[i][open] != -1)
+            return dp[i][open];
+
+        bool ans = false;
+
+        if (s[i] == '(') {
+            ans = solve(s, i + 1, open + 1);
         }
-     }
-     return t[idx][open]=isValid;
-}
+
+        else if (s[i] == ')') {
+            ans = solve(s, i + 1, open - 1);
+        }
+
+        else { // '*'
+
+            // '*' = '('
+            ans = solve(s, i + 1, open + 1)
+
+                // '*' = empty
+                || solve(s, i + 1, open)
+
+                // '*' = ')'
+                || solve(s, i + 1, open - 1);
+        }
+
+        return dp[i][open] = ans;
+    }
+
     bool checkValidString(string s) {
-        int n=s.size();
-        memset(t, -1, sizeof(t));
-        return solve(0,0,s,n);
+        memset(dp, -1, sizeof(dp));
+
+        return solve(s, 0, 0);
     }
 };

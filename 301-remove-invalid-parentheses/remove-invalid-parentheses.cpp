@@ -4,8 +4,8 @@ vector<string>ans;
 int bal=0;
 int maxl=0;
 void solve(int i,string &s,string &curr,int bal){
-  if(bal<0)return;
-if(i==s.size()){
+  if(bal<0)return ;
+  if(i==s.size()){
    if(bal == 0) {
 
                 if(curr.size() > maxl) {

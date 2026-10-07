@@ -73,13 +73,13 @@ public:
         for (int i = 0; i < n; i++) {
 
             long long maxCount =
-                1LL * (i - lge[i]) * (rge[i] - i);
+              (i - lge[i]) * (rge[i] - i);
 
             long long minCount =
-                1LL * (i - lse[i]) * (rse[i] - i);
+              (i - lse[i]) * (rse[i] - i);
 
-            ans += 1LL * nums[i] * maxCount;
-            ans -= 1LL * nums[i] * minCount;
+            ans +=  nums[i] * maxCount;
+            ans -=  nums[i] * minCount;
         }
 
         return ans;

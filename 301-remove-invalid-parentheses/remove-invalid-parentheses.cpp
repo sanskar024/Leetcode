@@ -4,7 +4,7 @@ vector<string>ans;
 int bal=0;
 int maxl=0;
 void solve(int i,string &s,string &curr,int bal){
-  
+  if(bal<0)return;
 if(i==s.size()){
    if(bal == 0) {
 
@@ -22,11 +22,11 @@ if(i==s.size()){
 if(s[i]=='(')bal++;
 else if(s[i]==')')bal--;
 
-if(bal>=0){
+
     curr.push_back(s[i]);
     solve(i+1,s,curr,bal);
     curr.pop_back();
-    }
+    
 if(s[i] == '(')
     bal--;
 else if(s[i] == ')')

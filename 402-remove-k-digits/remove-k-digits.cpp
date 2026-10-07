@@ -1,6 +1,9 @@
 class Solution {
 public:
     string removeKdigits(string num, int k) {
+
+        if(k == num.size())
+            return "0";
         stack<char>st;
         for(int i=0;i<num.size();i++){
             if(st.empty())st.push(num[i]);
@@ -8,8 +11,6 @@ public:
                 while(!st.empty()&&num[i]-'0'<st.top()-'0'&&k>0){
                     st.pop();
                     k--;
-
-
                 }
                 st.push(num[i]);
             }

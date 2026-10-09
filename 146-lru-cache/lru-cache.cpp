@@ -24,17 +24,16 @@ int n;
       makefirst(key); 
       }
         else{
-            
-            dll.push_front(key);
-            mp[key]={dll.begin(),value};
-             n--;
-        }
-        if(n<0){
+            if(n<=0){
                 int key_tobe_del=dll.back();
                 dll.pop_back();
                 n++;
                 mp.erase(key_tobe_del);
             }
+            dll.push_front(key);
+            mp[key]={dll.begin(),value};
+             n--;
+        }
        
     }
 };

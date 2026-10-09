@@ -24,7 +24,7 @@ int n;
       makefirst(key); 
       }
         else{
-            if(n<=0){
+            if(n==0){
                 int key_tobe_del=dll.back();
                 dll.pop_back();
                 n++;

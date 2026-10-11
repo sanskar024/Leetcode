@@ -20,19 +20,19 @@ public:
         }
 
         else if (s[i] == ')') {
-            ans = solve(s, i + 1, open - 1);
+            if( solve(s, i + 1, open - 1))return true;
         }
 
         else { // '*'
 
             // '*' = '('
-            ans = solve(s, i + 1, open + 1)
+       if( solve(s, i + 1, open + 1)
 
                 // '*' = empty
                 || solve(s, i + 1, open)
 
                 // '*' = ')'
-                || solve(s, i + 1, open - 1);
+                || solve(s, i + 1, open - 1))return true;
         }
 
         return dp[i][open] = ans;

@@ -16,7 +16,7 @@ public:
         bool ans = false;
 
         if (s[i] == '(') {
-            ans = solve(s, i + 1, open + 1);
+          if (solve(s, i + 1, open + 1))return true;
         }
 
         else if (s[i] == ')') {

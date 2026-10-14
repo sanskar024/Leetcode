@@ -11,7 +11,7 @@ public:
 sum-=currnum;
 num-=1;
 ans+=to_string(currnum);
-currnum=9;
+
             }
         }
         while(num>0&&sum==0){

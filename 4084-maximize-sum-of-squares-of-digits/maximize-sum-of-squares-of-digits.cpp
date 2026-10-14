@@ -11,6 +11,7 @@ public:
 sum-=currnum;
 num-=1;
 ans+=to_string(currnum);
+currnum=9;
             }
         }
         while(num>0&&sum==0){
@@ -18,9 +19,6 @@ ans+=to_string(currnum);
             num--;
         }
         if(sum>0&&num==0)return "";
-        if(sum>0&&num==1){
-            ans+=to_string(sum);
-
-        }
+       
 return ans;   }
 };

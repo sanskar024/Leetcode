@@ -25,9 +25,9 @@ public:
             return static_cast<double>(merged[total / 2]);
         } else {
             // If the total number of elements is even, calculate the average of the two middle elements as the median.
-            int middle1 = merged[total / 2 - 1];
-            int middle2 = merged[total / 2];
-            return (static_cast<double>(middle1) + static_cast<double>(middle2)) / 2.0;
+            int middle1 = double(merged[total / 2 - 1]);
+            int middle2 = double(merged[total / 2 ]);
+            return (middle1+middle2) / 2.0;
         }
     }
 };

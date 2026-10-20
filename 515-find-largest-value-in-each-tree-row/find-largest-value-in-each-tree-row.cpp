@@ -19,9 +19,11 @@ public:
         while(!q.empty()){
             int size=q.size();
             vector<int>lvl;
+            int maxval=INT_MIN;
             for(int i=0;i<size;i++){
                 auto node=q.front();
                 q.pop();
+                maxval=max(maxval,node->val);
                 lvl.push_back(node->val);
                 if(node->left!=NULL)
                 q.push(node->left);
@@ -29,7 +31,7 @@ public:
                 q.push(node->right);
             
             }
-                ans.push_back(*max_element(lvl.begin(),lvl.end()));
+                ans.push_back(maxval);
         }
    return ans; }
 };

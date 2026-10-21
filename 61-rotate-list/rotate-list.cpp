@@ -10,37 +10,23 @@
  */
 class Solution {
 public:
-ListNode* getlast(ListNode* head){
-    while(head->next!=NULL){
-        head=head->next;
 
-    }
-    return head;
-}
-ListNode* getlastii(ListNode* head){
-    while(head->next->next!=NULL){
-        head=head->next;
-
-    }
-    return head;
-}
     ListNode* rotateRight(ListNode* head, int k) {
     if(head==nullptr )return nullptr;
     if(head->next==NULL)return head;
-    int count=0;
+    int count=1;
      ListNode* temp=head;
-    while(temp!=nullptr){
+    while(temp->next!=nullptr){
         temp=temp->next;
         count++;
     }
     k=k%count;
-        while(k>0){
-            ListNode* last=getlast(head);
-            ListNode* lastii=getlastii(head);
-            lastii->next=nullptr;
-            last->next=head;
-            head=last;
-            k--;
-        }
-  return head;  }
+    temp->next=head;
+       ListNode* tail=head;
+      for(int i=0;i<count-k-1;i++){
+        tail=tail->next;
+      }
+      ListNode* newHead=tail->next;
+      tail->next=NULL;
+      return newHead; }
 };

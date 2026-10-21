@@ -4,7 +4,7 @@ public:
         if (!head) return nullptr;
 
         ListNode* tail = head;
-        for (int i = 0; i < k; ++i) {
+        for (int i = 0; i < k;i++) {
             if (!tail) return head;
             tail = tail->next;
         }
@@ -14,7 +14,6 @@ public:
         return newHead;
     }
 
-private:
     ListNode* reverse(ListNode* cur, ListNode* end) {
         ListNode* prev = nullptr;
         while (cur != end) {

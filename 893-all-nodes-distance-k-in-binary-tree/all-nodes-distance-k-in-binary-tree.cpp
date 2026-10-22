@@ -12,14 +12,15 @@ public:
      unordered_map<TreeNode*, TreeNode*> mp;
      void parent(TreeNode* root){
         if(root==NULL)return;
+         if(root->right!=NULL){
+            mp[root->right]=root;
+        }
+        parent(root->right);
         if(root->left){
             mp[root->left]=root;
         }
         parent(root->left);
-        if(root->right!=NULL){
-            mp[root->right]=root;
-        }
-        parent(root->right);
+       
      }
     vector<int> distanceK(TreeNode* node, TreeNode* target, int k) {
   

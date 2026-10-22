@@ -23,11 +23,11 @@ public:
      }
     vector<int> distanceK(TreeNode* node, TreeNode* target, int k) {
   
-      
+      if(k==0)return {target->val};
        parent(node);
        queue<TreeNode*>q;
            vector<int>ans;
-       int count=0;
+       int count=1;
        unordered_set<TreeNode*> vis;
        q.push(target);
            vis.insert(target);
@@ -38,7 +38,7 @@ public:
         for(int i=0;i<n;i++){
               TreeNode* root = q.front();
               q.pop();
-               level.push_back(root->val);
+             
             if(root->left&& !vis.count(root->left)){
                 q.push(root->left);
                 vis.insert(root->left);
@@ -57,10 +57,15 @@ public:
         }
        
         if(count==k){
-            ans=level;
+          
             break;
         }
          count++;
+       }
+       while(!q.empty()){
+        ans.push_back(q.front()->val);
+        q.pop();
+
        }
     
    return ans; }
